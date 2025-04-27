@@ -2,12 +2,17 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include QMK_KEYBOARD_H
 
-enum sofle_layers {
-    /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
-    _BASE,
-    _SYM,
-    _NAV,
-};
+// Left-hand home row mods
+#define H_S LGUI_T(KC_S)
+#define H_N LALT_T(KC_N)
+#define H_T LSFT_T(KC_T)
+#define H_H LCTL_T(KC_H)
+
+// Right-hand home row mods
+#define H_A RCTL_T(KC_A)
+#define H_E RSFT_T(KC_E)
+#define H_I LALT_T(KC_I)
+#define H_C RGUI_T(KC_C)
 
 enum custom_keycodes {
     KC_PRVWD = QK_USER,
@@ -36,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT(
   KC_GRV,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                          KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,
   KC_TAB,   KC_V,   KC_W,    KC_G,    KC_M,    KC_J,                          KC_SCLN, KC_DOT,  KC_QUOT, KC_EQL,  KC_SLSH,  KC_Z,
-  KC_ESC,   KC_S,   KC_N,    KC_T,    KC_H,    KC_K,                          KC_COMM, KC_A,    KC_E,    KC_I,    KC_C,     KC_Q,
+  KC_ESC,   H_S,    H_N,     H_T,     H_H,     KC_K,                          KC_COMM, H_A,     H_E,     H_I,     H_C,      KC_Q,
   KC_LSFT,  KC_F,   KC_P,    KC_D,    KC_L,    KC_X,   KC_MUTE,      XXXXXXX, KC_MINS, KC_U,    KC_O,    KC_Y,    KC_B,     KC_ENT,
                  KC_LEFT,    KC_RGHT, KC_R,    KC_SPC, KC_ESC,       TO(1),   KC_BSPC, KC_ENT,  KC_UP,   KC_DOWN
 ),
