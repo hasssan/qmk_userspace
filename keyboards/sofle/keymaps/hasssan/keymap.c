@@ -21,6 +21,8 @@ enum custom_keycodes {
     KC_LEND
 };
 
+/*  KC_ESC,   H_S,    H_N,     H_T,     H_H,     KC_K,                          KC_COMM, H_A,     H_E,     H_I,    H_C,      KC_Q, */
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * Hands Down Promethium (Inverted) BASE
@@ -41,8 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT(
   KC_GRV,   KC_DEL, C(KC_V), C(KC_A), C(KC_C), A(KC_TAB),                     KC_HOME, KC_PGUP, KC_PGDN, KC_END, XXXXXXX,  KC_MPLY,
   KC_TAB,   KC_V,   KC_W,    KC_G,    KC_M,    KC_J,                          KC_SCLN, KC_DOT,  KC_QUOT, KC_EQL, KC_SLSH,  KC_Z,
-//   KC_ESC,   H_S,    H_N,     H_T,     H_H,     KC_K,                          KC_COMM, H_A,     H_E,     H_I,    H_C,      KC_Q,
-  KC_ESC,   KC_S,   KC_N,    KC_T,    KC_H,    KC_K,                          KC_COMM, KC_A,    KC_E,    KC_I    KC_C,     KC_Q,
+  KC_ESC,   KC_S,   KC_N,    KC_T,    KC_H,    KC_K,                          KC_COMM, KC_A,    KC_E,    KC_I,   KC_C,     KC_Q,
   KC_UNDS,  KC_F,   KC_P,    KC_D,    KC_L,    KC_X, KC_MUTE,        XXXXXXX, KC_MINS, KC_U,    KC_O,    KC_Y,   KC_B,     KC_BSPC,
                  KC_LEFT,    KC_RGHT, KC_BSPC, KC_R, KC_ESC,         TO(1),   KC_SPC,  KC_ENT,  KC_UP,   KC_DOWN
 ),
