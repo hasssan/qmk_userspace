@@ -7,6 +7,6 @@
 // #define TRI_LAYER_UPPER_LAYER 3
 // #define TRI_LAYER_ADJUST_LAYER 4
 
-#define TAPPING_TERM 250
-#define CHORDAL_HOLD
-#define PERMISSIVE_HOLD
+// #define TAPPING_TERM 250
+// #define CHORDAL_HOLD
+// #define PERMISSIVE_HOLD
