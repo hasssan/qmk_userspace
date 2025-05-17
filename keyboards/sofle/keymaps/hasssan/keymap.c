@@ -4,66 +4,56 @@
 
 #include "layout.h"
 
+enum layers {
+    BASE,  // 0
+    SYM,   // 1
+    NAV,   // 2
+    NUM,   // 3
+    WIN,   // 4
+    FUN,   // 5
+    EXT,   // 6
+    NOHRM, // 7
+};
+
 // Left-hand home row mods
-#define H_S LGUI_T(KC_S)
-#define H_N LALT_T(KC_N)
-#define H_T LSFT_T(KC_T)
-#define H_H LCTL_T(KC_H)
+#define HRM_S LALT_T(KC_S)
+#define HRM_N LT(SYM, KC_N)
+#define HRM_T LSFT_T(KC_T)
+#define HRM_H LT(NAV, KC_H)
+
+#define HRM_F LGUI_T(KC_F)
+#define HRM_L LCTL_T(KC_L)
+
+#define EXT_UND LT(EXT, KC_UNDS)
 
 // Right-hand home row mods
-#define H_A RCTL_T(KC_A)
-#define H_E RSFT_T(KC_E)
-#define H_I LALT_T(KC_I)
-#define H_C RGUI_T(KC_C)
+#define HRM_A LT(NUM, KC_A)
+#define HRM_E RSFT_T(KC_E)
+#define HRM_I LT(SYM, KC_I)
+#define HRM_C LALT_T(KC_C)
 
+#define HRM_U LCTL_T(KC_C)
+#define HRM_Y LT(WIN, KC_Y)
+#define HRM_B RGUI_T(KC_B)
+
+// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/*
- * Hands Down Promethium (Inverted) BASE
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  `   |  DEL |  C-V |  C-A |  C-C |A-TAB |                    | HOME | PGUP | PGDN |  END |      | PLAY |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | Tab  |   V  |   W  |   G  |   M  |   J  |                    |   ;  |   .  |   '  |   =  |   /  |  Z   |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | ESC  |   S  |   N  |   T  |   H  |   K  |-------.    ,-------|   ,  |   A  |   E  |   I  |   C  |  Q   |
- * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * |   _  |   F  |   P  |   D  |   L  |   X  |-------|    |-------|   -  |   U  |   O  |   Y  |   B  |BKSPC |
- * `-----------------------------------------/       /    \       \-----------------------------------------'
- *            | LEFT |RIGHT | BKSPC |  R  | / ESC   /      \  SYM  \  | SPC  | ENT  |  UP  | DOWN |
- *            |      |      |      |      |/       /        \       \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-
-[0] = LAYOUT_LR(
+[BASE] = LAYOUT_LR( // Hands Down Promethium (Inverted)
     /* Left side */
-    KC_GRV , KC_DEL , C(KC_V), C(KC_A), C(KC_C), A(KC_TAB),
+    KC_GRV , KC_DEL , C(KC_V), C(KC_A), C(KC_C), MS_BTN1,
     KC_TAB , KC_V   , KC_W   , KC_G   , KC_M   , KC_J   ,
-    KC_ESC , KC_S   , KC_N   , KC_T   , KC_H   , KC_K   ,
-    KC_UNDS, KC_F   , KC_P   , KC_D   , KC_L   , KC_X   , KC_MUTE,
+    KC_BSPC, KC_S   , KC_N   , KC_T   , KC_H   , KC_K   ,
+    EXT_UND, KC_F   , KC_P   , KC_D   , KC_L   , KC_X   , KC_MUTE,
                       KC_LEFT, KC_RGHT, KC_BSPC, KC_R   , KC_ESC,
 
                 /* Right side */
-                         KC_HOME, KC_PGUP, KC_PGDN, KC_END, XXXXXXX, KC_MPLY,
+                         KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_MNXT, KC_MPLY,
                          KC_SCLN, KC_DOT , KC_QUOT, KC_EQL, KC_SLSH, KC_Z   ,
                          KC_COMM, KC_A   , KC_E   , KC_I  , KC_C   , KC_Q   ,
-                XXXXXXX, KC_MINS, KC_U   , KC_O   , KC_Y  , KC_B   , KC_BSPC,
+                XXXXXXX, KC_MINS, KC_U   , KC_O   , KC_Y  , KC_B   , KC_ENT ,
                 TO(1)  , KC_SPC , KC_ENT , KC_UP  , KC_DOWN
 ),
-
-/* SYM
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   `  |   <  |   >  |   -  |   |  |                    |   ^  |   {  |   }  |   $  |   %  |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |   !  |   *  |   /  |   =  |   &  |-------.    ,-------|   #  |   (  |   )  |   ;  |   "  |      |
- * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * |      |  ~   |  +   |  [   |   ]  |   %  |-------|    |-------|   @  |   :  |   ,  |   .  |   '  |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LEFT |RIGHT |   R  |  SPC | / BASE  /       \ NUM  \  |BKSPC | ENT  |  UP  | DOWN |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-[1] = LAYOUT_LR(
+[SYM] = LAYOUT_LR(
     /* Left side */
     _______, _______, _______, _______, _______, _______,
     _______, KC_GRV,  KC_LT,   KC_GT,   KC_MINS, KC_PIPE,
@@ -78,21 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 _______, KC_AT,   KC_COLN, KC_COMM, KC_DOT,  TO(3),   _______,
                 TO(1),   _______, _______, _______, _______
 ),
-/* NUM
- * ,----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |  /   |  9   |  8   |  7   |  *   |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |  -   |  3   |  2   |  1   |  +   |-------.    ,-------|      | CTRL |   E  | ALT  | GUI  |      |
- * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * |      |  x   |  6   |  5   |  4   |  %   |-------|    |-------|      |      |   ,  |  .   | FUN  |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LEFT |RIGHT |   R  |  SPC | / BASE  /       \ SYM  \  |BKSPC | ENT  |  UP  | DOWN |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-[2] = LAYOUT_LR(
+[NUM] = LAYOUT_LR(
     /* Left side */
     _______, _______, _______, _______, _______, _______,
     _______, KC_SLSH, KC_9,    KC_8,    KC_7,    KC_ASTR,
@@ -103,25 +79,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 /* Right side */
                          _______, _______, _______, _______, _______, _______,
                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-                         XXXXXXX, KC_LCTL, H_E,     KC_LALT, KC_LGUI, _______,
+                         XXXXXXX, KC_LCTL, KC_E,    KC_LALT, KC_LGUI, _______,
                 _______, XXXXXXX, XXXXXXX, KC_COMM, KC_DOT,  TO(3),   _______,
                 TO(1),   _______, _______, _______, _______
 ),
-/* FUN
- * ,----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |  F12 |  F9  |  F8  |  F7  |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |  F10 |  F3  |  F2  |  F1  |      |-------.    ,-------|      | CTRL |SHIFT | ALT  | GUI  |      |
- * |------+------+------+------+------+------|  MUTE |    |       |------+------+------+------+------+------|
- * |      |  F11 |  F6  |  F5  |  F4  |      |-------|    |-------|      |      |      |      |      |      |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            | LEFT |RIGHT |   R  |  SPC | / BASE  /       \ SYM  \  |BKSPC | ENT  |  UP  | DOWN |
- *            |      |      |      |      |/       /         \      \ |      |      |      |      |
- *            `----------------------------------'           '------''---------------------------'
- */
-[3] = LAYOUT_LR(
+[FUN] = LAYOUT_LR(
     /* Left side */
     _______, _______, _______, _______, _______, _______,
     _______, KC_F12,  KC_F9,   KC_F8,   KC_F7,   XXXXXXX,
@@ -132,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                 /* Right side */
                          _______, _______, _______, _______, _______, _______,
                          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-                         XXXXXXX, KC_LCTL, H_E,     KC_LALT, KC_LGUI, _______,
+                         XXXXXXX, KC_LCTL, KC_E,    KC_LALT, KC_LGUI, _______,
                 _______, XXXXXXX, XXXXXXX, KC_COMM, KC_DOT,  XXXXXXX, _______,
                 TO(1),   _______, _______, _______, _______
 ),
@@ -142,10 +104,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
-    [0] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
-    [1] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
-    [2] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
-    [3] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [SYM] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [NUM] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [FUN] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
 };
 #endif
 
