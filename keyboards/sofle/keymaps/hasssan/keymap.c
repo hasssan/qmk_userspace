@@ -27,6 +27,7 @@ enum layers {
 #define EXT_UND LT(EXT, KC_UNDS)
 
 // Right-hand home row mods
+#define HRM_COM LT(FUN, KC_COMM)
 #define HRM_A LT(NUM, KC_A)
 #define HRM_E RSFT_T(KC_E)
 #define HRM_I LT(SYM, KC_I)
@@ -42,16 +43,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Left side */
     KC_GRV , KC_DEL , C(KC_V), C(KC_A), C(KC_C), MS_BTN1,
     KC_TAB , KC_V   , KC_W   , KC_G   , KC_M   , KC_J   ,
-    KC_BSPC, KC_S   , KC_N   , KC_T   , KC_H   , KC_K   ,
-    EXT_UND, KC_F   , KC_P   , KC_D   , KC_L   , KC_X   , KC_MUTE,
+    KC_BSPC, HRM_S  , HRM_N  , HRM_T  , HRM_H  , KC_K   ,
+    EXT_UND, HRM_F  , KC_P   , KC_D   , HRM_L  , KC_X   , KC_MUTE,
                       KC_LEFT, KC_RGHT, KC_BSPC, KC_R   , KC_ESC,
 
                 /* Right side */
                          KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_MNXT, KC_MPLY,
                          KC_SCLN, KC_DOT , KC_QUOT, KC_EQL, KC_SLSH, KC_Z   ,
-                         KC_COMM, KC_A   , KC_E   , KC_I  , KC_C   , KC_Q   ,
-                XXXXXXX, KC_MINS, KC_U   , KC_O   , KC_Y  , KC_B   , KC_ENT ,
-                TO(1)  , KC_SPC , KC_ENT , KC_UP  , KC_DOWN
+                         HRM_COM, HRM_A  , HRM_E  , HRM_I , HRM_C  , KC_Q   ,
+                XXXXXXX, KC_MINS, HRM_U  , KC_O   , HRM_Y , HRM_B  , KC_ENT ,
+                QK_REP , KC_SPC , KC_TAB , KC_UP  , KC_DOWN
 ),
 [SYM] = LAYOUT_LR(
     /* Left side */
