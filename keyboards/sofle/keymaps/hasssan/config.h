@@ -7,6 +7,12 @@
 // #define TRI_LAYER_UPPER_LAYER 3
 // #define TRI_LAYER_ADJUST_LAYER 4
 
-// #define TAPPING_TERM 250
-// #define CHORDAL_HOLD
-// #define PERMISSIVE_HOLD
+// Tap-hold configuration for home row mods.
+#define TAPPING_TERM 225
+#define TAPPING_TERM_PER_KEY
+#define CHORDAL_HOLD
+#define PERMISSIVE_HOLD
+#define QUICK_TAP_TERM_PER_KEY
+
+// When idle, turn off Layer Lock after 60 seconds.
+#define LAYER_LOCK_IDLE_TIMEOUT 60000

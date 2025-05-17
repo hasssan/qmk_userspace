@@ -5,14 +5,14 @@
 #include "layout.h"
 
 enum layers {
-    BASE,  // 0
-    SYM,   // 1
-    NAV,   // 2
-    NUM,   // 3
-    WIN,   // 4
-    FUN,   // 5
-    EXT,   // 6
-    NOHRM, // 7
+    BASE, // 0
+    SYM,  // 1
+    NAV,  // 2
+    NUM,  // 3
+    WIN,  // 4
+    FUN,  // 5
+    EXT,  // 6
+    NHRM, // 7
 };
 
 // Left-hand home row mods
@@ -43,31 +43,46 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Left side */
     KC_GRV , KC_DEL , C(KC_V), C(KC_A), C(KC_C), MS_BTN1,
     KC_TAB , KC_V   , KC_W   , KC_G   , KC_M   , KC_J   ,
-    KC_BSPC, HRM_S  , HRM_N  , HRM_T  , HRM_H  , KC_K   ,
+    KC_ESC , HRM_S  , HRM_N  , HRM_T  , HRM_H  , KC_K   ,
     EXT_UND, HRM_F  , KC_P   , KC_D   , HRM_L  , KC_X   , KC_MUTE,
                       KC_LEFT, KC_RGHT, KC_BSPC, KC_R   , KC_ESC,
 
-                /* Right side */
-                         KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_MNXT, KC_MPLY,
-                         KC_SCLN, KC_DOT , KC_QUOT, KC_EQL, KC_SLSH, KC_Z   ,
-                         HRM_COM, HRM_A  , HRM_E  , HRM_I , HRM_C  , KC_Q   ,
-                XXXXXXX, KC_MINS, HRM_U  , KC_O   , HRM_Y , HRM_B  , KC_ENT ,
-                QK_REP , KC_SPC , KC_TAB , KC_UP  , KC_DOWN
+             /* Right side */
+                      KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_MNXT, KC_MPLY,
+                      KC_SCLN, KC_DOT , KC_QUOT, KC_EQL, KC_SLSH, KC_Z   ,
+                      HRM_COM, HRM_A  , HRM_E  , HRM_I , HRM_C  , KC_Q   ,
+             XXXXXXX, KC_MINS, HRM_U  , KC_O   , HRM_Y , HRM_B  , KC_ENT ,
+             QK_REP , KC_SPC , KC_TAB , KC_UP  , KC_DOWN
 ),
 [SYM] = LAYOUT_LR(
     /* Left side */
     _______, _______, _______, _______, _______, _______,
-    _______, KC_GRV,  KC_LT,   KC_GT,   KC_MINS, KC_PIPE,
-    _______, KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL,  KC_AMPR,
+    _______, KC_GRV , KC_LT  , KC_GT  , KC_MINS, KC_PIPE,
+    _______, KC_EXLM, KC_ASTR, KC_SLSH, KC_EQL , KC_AMPR,
     _______, KC_TILD, KC_PLUS, KC_LBRC, KC_RBRC, KC_PERC, _______,
-                      _______, _______, _______, _______, TO(0),
+                      _______, _______, _______, _______, _______,
 
-                /* Right side */
-                         _______, _______, _______, _______, _______, _______,
-                         KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR,  KC_PERC, _______,
-                         KC_HASH, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO, _______,
-                _______, KC_AT,   KC_COLN, KC_COMM, KC_DOT,  TO(3),   _______,
-                TO(1),   _______, _______, _______, _______
+             /* Right side */
+                      _______, _______, _______, _______, _______, _______,
+                      KC_CIRC, KC_LCBR, KC_RCBR, KC_DLR , KC_PERC, _______,
+                      KC_HASH, KC_LPRN, KC_RPRN, KC_SCLN, KC_DQUO, _______,
+             _______, KC_AT  , KC_COLN, KC_COMM, KC_DOT , KC_QUOT, _______,
+             _______, _______, _______, _______, _______
+),
+[NAV] = LAYOUT_LR(
+    /* Left side */
+    _______, _______, _______, _______, _______, _______,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, KC_LALT, XXXXXXX, KC_LSFT, XXXXXXX, XXXXXXX,
+    _______, KC_LGUI, XXXXXXX, XXXXXXX, KC_LCTL, XXXXXXX, _______,
+                      _______, _______, _______, _______, _______,
+
+             /* Right side */
+                      _______, _______, _______, _______, _______, _______,
+                      KC_PGUP, KC_HOME, KC_UP  , KC_END , XXXXXXX, _______,
+                      KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, _______,
+             _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+             QK_LLCK, _______, _______, _______, _______
 ),
 [NUM] = LAYOUT_LR(
     /* Left side */
@@ -75,29 +90,75 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_SLSH, KC_9,    KC_8,    KC_7,    KC_ASTR,
     _______, KC_MINS, KC_3,    KC_2,    KC_1,    KC_PLUS,
     _______, KC_X,    KC_6,    KC_5,    KC_4,    KC_PERC, _______,
-                      _______, _______, _______, _______, TO(0),
+                      _______, _______, _______, _______, _______,
 
-                /* Right side */
-                         _______, _______, _______, _______, _______, _______,
-                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-                         XXXXXXX, KC_LCTL, KC_E,    KC_LALT, KC_LGUI, _______,
-                _______, XXXXXXX, XXXXXXX, KC_COMM, KC_DOT,  TO(3),   _______,
-                TO(1),   _______, _______, _______, _______
+             /* Right side */
+                      _______, _______, _______, _______, _______, _______,
+                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+                      XXXXXXX, XXXXXXX, HRM_E  , XXXXXXX, KC_LALT, _______,
+             _______, XXXXXXX, KC_LCTL, KC_COMM, KC_DOT , KC_LGUI, _______,
+             QK_LLCK,   KC_0   , _______, _______, _______
+),
+[WIN] = LAYOUT_LR(
+    /* Left side */
+    _______, _______, _______, _______, _______, _______,
+    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    _______, XXXXXXX, LCTL(3), LCTL(2), LCTL(1), XXXXXXX,
+    _______, XXXXXXX, LCTL(6), LCTL(5), LCTL(4), C(KC_W), _______  ,
+                      _______, _______, _______, _______, G(KC_SPC),
+
+             /* Right side */
+                      _______, _______     , _______  , _______, _______, _______,
+                      XXXXXXX, XXXXXXX     , XXXXXXX  , XXXXXXX, XXXXXXX, _______,
+                               // TODO: Windows/MAC Compatibility
+                      XXXXXXX, S(G(KC_GRV)), G(KC_GRV), XXXXXXX, XXXXXXX, _______,
+             _______, XXXXXXX, S(A(KC_TAB)), A(KC_TAB), XXXXXXX, XXXXXXX, _______,
+             QK_LLCK, _______, _______, _______, _______
 ),
 [FUN] = LAYOUT_LR(
     /* Left side */
     _______, _______, _______, _______, _______, _______,
-    _______, KC_F12,  KC_F9,   KC_F8,   KC_F7,   XXXXXXX,
-    _______, KC_F10,  KC_F3,   KC_F2,   KC_F1,   XXXXXXX,
-    _______, KC_F11,  KC_F6,   KC_F5,   KC_F4,   XXXXXXX, _______,
-                      _______, _______, _______, _______, TO(0),
+    _______, KC_F12 , KC_F9  , KC_F8  , KC_F7  , XXXXXXX,
+    _______, KC_F10 , KC_F3  , KC_F2  , KC_F1  , XXXXXXX,
+    _______, KC_F11 , KC_F6  , KC_F5  , KC_F4  , XXXXXXX, _______,
+                      _______, _______, _______, _______, _______,
 
-                /* Right side */
-                         _______, _______, _______, _______, _______, _______,
-                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-                         XXXXXXX, KC_LCTL, KC_E,    KC_LALT, KC_LGUI, _______,
-                _______, XXXXXXX, XXXXXXX, KC_COMM, KC_DOT,  XXXXXXX, _______,
-                TO(1),   _______, _______, _______, _______
+             /* Right side */
+                      _______, _______, _______, _______, _______, _______,
+                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+                      XXXXXXX, XXXXXXX, KC_LSFT, XXXXXXX, KC_LALT, _______,
+             _______, XXXXXXX, KC_LCTL, XXXXXXX, XXXXXXX, KC_LGUI, _______,
+             QK_LLCK, _______, _______, _______, _______
+),
+[EXT] = LAYOUT_LR(
+    /* Left side */
+    _______, _______ , _______, _______, _______, _______,
+    _______, TO(NHRM), XXXXXXX, XXXXXXX, CG_TOGG, XXXXXXX,
+    _______, KC_LALT , KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,
+    _______, KC_LGUI , C(KC_V), C(KC_A), C(KC_C), XXXXXXX, _______,
+                       _______, _______, _______, _______, MS_BTN1,
+
+             /* Right side */
+                      _______, _______, _______, _______, _______, _______,
+                      MS_WHLU, MS_BTN1, MS_UP  , MS_BTN2, XXXXXXX, _______,
+                      MS_WHLD, MS_LEFT, KC_LSFT, MS_RGHT, XXXXXXX, _______,
+             _______, XXXXXXX, MS_WHLL, XXXXXXX, MS_WHLR, XXXXXXX, _______,
+             QK_LLCK, _______, _______, _______, _______
+),
+[NHRM] = LAYOUT_LR( // Hands Down Promethium (Inverted)
+    /* Left side */
+    _______, TO(BASE), _______, _______, _______, _______,
+    _______, KC_V    , KC_W   , KC_G   , KC_M   , KC_J   ,
+    _______, KC_S    , KC_N   , KC_T   , KC_H   , KC_K   ,
+    EXT_UND, KC_F    , KC_P   , KC_D   , KC_L   , KC_X   , KC_MUTE,
+                       KC_LEFT, KC_RGHT, KC_BSPC, KC_R   , KC_ESC,
+
+             /* Right side */
+                      _______, _______, _______, _______, _______, _______,
+                      KC_SCLN, KC_DOT , KC_QUOT, KC_EQL, KC_SLSH, KC_Z   ,
+                      KC_COMM, KC_A   , KC_E   , KC_I  , KC_C   , KC_Q   ,
+             XXXXXXX, KC_MINS, KC_U   , KC_O   , KC_Y  , KC_B   , KC_ENT ,
+             QK_REP , KC_SPC , KC_TAB , KC_UP  , KC_DOWN
 ),
 };
 
@@ -106,10 +167,32 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [BASE] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
-    [SYM] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
-    [NUM] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
-    [FUN] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [SYM] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [NAV] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [NUM] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [FUN] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [EXT] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [NHRM] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
 };
+#endif
+
+#ifdef CHORDAL_HOLD
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+    LAYOUT_LR(
+    /* Left side */
+    '*'    , '*'    , '*'    , '*'    , '*'    , '*'    ,
+    '*'    , 'L'    , 'L'    , 'L'    , 'L'    , 'L'    ,
+    '*'    , 'L'    , 'L'    , 'L'    , 'L'    , 'L'    ,
+    '*'    , 'L'    , 'L'    , 'L'    , 'L'    , 'L'    , 'L'    ,
+                      '*'    , '*'    , '*'    , '*'    , '*'    ,
+
+             /* Right side */
+                      '*'    , '*'    , '*'    , '*'    , '*'    , '*'    ,
+                      'R'    , 'R'    , 'R'    , 'R'    , 'R'    , '*'    ,
+                      'R'    , 'R'    , 'R'    , 'R'    , 'R'    , '*'    ,
+             'R'    , 'R'    , 'R'    , 'R'    , 'R'    , 'R'    , '*'    ,
+             '*'    , '*'    , '*'    , '*'    , '*'
+    );
 #endif
 
 #ifdef OLED_ENABLE
