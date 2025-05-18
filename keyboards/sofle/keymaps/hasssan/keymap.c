@@ -17,9 +17,18 @@ enum layers {
 
 enum custom_keycodes {
     KC_NXWD = SAFE_RANGE, // Next Window ALT+TAB (Windows) or CMD+TAB (macOS)
-    KC_NXSD,              // Next Window same app for macOS CMD+`
+    KC_NXSW,              // Next Window same app for macOS CMD+`
     KC_NXTB,              // Next Tab CTRL+TAB, Windows and macOS behave the same
 };
+
+#define NX_TIMER 700 // Timer for NX keycodes
+
+bool     is_nxwd_active = false;
+bool     is_nxsw_active = false;
+bool     is_nxtb_active = false;
+uint16_t nxwd_timer     = 0;
+uint16_t nxsw_timer     = 0;
+uint16_t nxtb_timer     = 0;
 
 // Left-hand home row mods
 #define HRM_S LALT_T(KC_S)
@@ -39,7 +48,7 @@ enum custom_keycodes {
 #define HRM_I LT(SYM, KC_I)
 #define HRM_C LALT_T(KC_C)
 
-#define HRM_U LCTL_T(KC_C)
+#define HRM_U LCTL_T(KC_U)
 #define HRM_Y LT(WIN, KC_Y)
 #define HRM_B RGUI_T(KC_B)
 
@@ -109,14 +118,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Left side */
     _______, _______, _______, _______, _______, _______,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, XXXXXXX, LCTL(3), LCTL(2), LCTL(1), XXXXXXX,
+    _______, KC_LSFT, LCTL(3), LCTL(2), LCTL(1), XXXXXXX,
     _______, XXXXXXX, LCTL(6), LCTL(5), LCTL(4), C(KC_W), _______  ,
                       _______, _______, _______, _______, G(KC_SPC),
 
              /* Right side */
                       _______, _______, _______, _______, _______, _______,
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-                      XXXXXXX, XXXXXXX, KC_NXSD, XXXXXXX, XXXXXXX, _______,
+                      XXXXXXX, XXXXXXX, KC_NXSW, XXXXXXX, XXXXXXX, _______,
              _______, XXXXXXX, KC_NXTB, KC_NXWD, XXXXXXX, XXXXXXX, _______,
              QK_LLCK, _______, _______, _______, _______
 ),
@@ -146,7 +155,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              /* Right side */
                       _______, _______, _______, _______, _______, _______,
                       MS_WHLU, MS_BTN1, MS_UP  , MS_BTN2, XXXXXXX, _______,
-                      MS_WHLD, MS_LEFT, KC_LSFT, MS_RGHT, XXXXXXX, _______,
+                      MS_WHLD, MS_LEFT, MS_DOWN, MS_RGHT, XXXXXXX, _______,
              _______, XXXXXXX, MS_WHLL, XXXXXXX, MS_WHLR, XXXXXXX, _______,
              QK_LLCK, _______, _______, _______, _______
 ),
@@ -173,55 +182,76 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case KC_NXWD:
             // Next Window ALT+TAB (Windows) or CMD+TAB (macOS)
             if (record->event.pressed) {
-                if (keymap_config.swap_lctl_lgui) {
-                    register_mods(mod_config(MOD_LGUI));
-                    register_code(KC_TAB);
-                } else {
-                    register_mods(mod_config(MOD_LALT));
-                    register_code(KC_TAB);
+                if (!is_nxwd_active) {
+                    is_nxwd_active = true;
+                    if (keymap_config.swap_lctl_lgui) {
+                        register_mods(mod_config(MOD_LGUI));
+                    } else {
+                        register_mods(mod_config(MOD_LALT));
+                    }
                 }
+
+                nxwd_timer = timer_read();
+                register_code(KC_TAB);
             } else {
-                if (keymap_config.swap_lctl_lgui) {
-                    unregister_mods(mod_config(MOD_LGUI));
-                    unregister_code(KC_TAB);
-                } else {
-                    unregister_mods(mod_config(MOD_LALT));
-                    unregister_code(KC_TAB);
-                }
+                unregister_code(KC_TAB);
             }
             break;
-        case KC_NXSD:
-            // Next Window ALT+TAB (Windows) or CMD+TAB (macOS)
+        case KC_NXSW:
+            // Next Window same app for macOS CMD+`
             if (record->event.pressed) {
-                if (keymap_config.swap_lctl_lgui) {
-                    register_mods(mod_config(MOD_LGUI));
-                    register_code(KC_GRV);
-                } else {
-                    register_mods(mod_config(MOD_LALT));
-                    register_code(KC_GRV);
+                if (!is_nxsw_active) {
+                    is_nxsw_active = true;
+                    if (keymap_config.swap_lctl_lgui) {
+                        register_mods(mod_config(MOD_LGUI));
+                    } else {
+                        register_mods(mod_config(MOD_LALT));
+                    }
                 }
+                nxsw_timer = timer_read();
+                register_code(KC_GRV);
             } else {
-                if (keymap_config.swap_lctl_lgui) {
-                    unregister_mods(mod_config(MOD_LGUI));
-                    unregister_code(KC_GRV);
-                } else {
-                    unregister_mods(mod_config(MOD_LALT));
-                    unregister_code(KC_GRV);
-                }
+                unregister_code(KC_GRV);
             }
             break;
         case KC_NXTB:
             // Next Tab CTRL+TAB
             if (record->event.pressed) {
-                register_mods(mod_config(MOD_LCTL));
+                if (!is_nxtb_active) {
+                    is_nxtb_active = true;
+                    register_mods(mod_config(MOD_LCTL));
+                }
+                nxtb_timer = timer_read();
                 register_code(KC_TAB);
             } else {
-                unregister_mods(mod_config(MOD_LCTL));
                 unregister_code(KC_TAB);
             }
             break;
     }
     return true;
+}
+
+void matrix_scan_user(void) {
+    if (is_nxwd_active && timer_elapsed(nxwd_timer) > NX_TIMER) {
+        if (keymap_config.swap_lctl_lgui) {
+            unregister_mods(mod_config(MOD_LGUI));
+        } else {
+            unregister_mods(mod_config(MOD_LALT));
+        }
+        is_nxwd_active = false;
+    }
+    if (is_nxsw_active && timer_elapsed(nxsw_timer) > NX_TIMER) {
+        if (keymap_config.swap_lctl_lgui) {
+            unregister_mods(mod_config(MOD_LGUI));
+        } else {
+            unregister_mods(mod_config(MOD_LALT));
+        }
+        is_nxsw_active = false;
+    }
+    if (is_nxtb_active && timer_elapsed(nxtb_timer) > NX_TIMER) {
+        unregister_mods(mod_config(MOD_LCTL));
+        is_nxtb_active = false;
+    }
 }
 // clang-format off
 
@@ -280,17 +310,29 @@ void my_print_status_narrow(void) {
     oled_write_P(PSTR("\n\n"), false);
     oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
-        case 0:
+        case BASE:
             oled_write_P(PSTR("Base\n"), false);
             break;
-        case 1:
+        case SYM:
             oled_write_P(PSTR("Sym\n"), false);
             break;
-        case 2:
+        case NAV:
+            oled_write_P(PSTR("Nav\n"), false);
+            break;
+        case NUM:
             oled_write_P(PSTR("Num\n"), false);
             break;
-        case 3:
+        case WIN:
+            oled_write_P(PSTR("Win\n"), false);
+            break;
+        case FUN:
             oled_write_P(PSTR("Fun\n"), false);
+            break;
+        case EXT:
+            oled_write_P(PSTR("EXT\n"), false);
+            break;
+        case NHRM:
+            oled_write_P(PSTR("NHRM\n"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
