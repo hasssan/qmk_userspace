@@ -15,6 +15,12 @@ enum layers {
     NHRM, // 7
 };
 
+enum custom_keycodes {
+    KC_NXWD = SAFE_RANGE, // Next Window ALT+TAB (Windows) or CMD+TAB (macOS)
+    KC_NXSD,              // Next Window same app for macOS CMD+`
+    KC_NXTB,              // Next Tab CTRL+TAB, Windows and macOS behave the same
+};
+
 // Left-hand home row mods
 #define HRM_S LALT_T(KC_S)
 #define HRM_N LT(SYM, KC_N)
@@ -108,11 +114,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       _______, _______, _______, _______, G(KC_SPC),
 
              /* Right side */
-                      _______, _______     , _______  , _______, _______, _______,
-                      XXXXXXX, XXXXXXX     , XXXXXXX  , XXXXXXX, XXXXXXX, _______,
-                               // TODO: Windows/MAC Compatibility
-                      XXXXXXX, S(G(KC_GRV)), G(KC_GRV), XXXXXXX, XXXXXXX, _______,
-             _______, XXXXXXX, S(A(KC_TAB)), A(KC_TAB), XXXXXXX, XXXXXXX, _______,
+                      _______, _______, _______, _______, _______, _______,
+                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
+                      XXXXXXX, XXXXXXX, KC_NXSD, XXXXXXX, XXXXXXX, _______,
+             _______, XXXXXXX, KC_NXTB, KC_NXWD, XXXXXXX, XXXXXXX, _______,
              QK_LLCK, _______, _______, _______, _______
 ),
 [FUN] = LAYOUT_LR(
@@ -162,7 +167,63 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 };
 
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {}
+// clang-format on
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case KC_NXWD:
+            // Next Window ALT+TAB (Windows) or CMD+TAB (macOS)
+            if (record->event.pressed) {
+                if (keymap_config.swap_lctl_lgui) {
+                    register_mods(mod_config(MOD_LGUI));
+                    register_code(KC_TAB);
+                } else {
+                    register_mods(mod_config(MOD_LALT));
+                    register_code(KC_TAB);
+                }
+            } else {
+                if (keymap_config.swap_lctl_lgui) {
+                    unregister_mods(mod_config(MOD_LGUI));
+                    unregister_code(KC_TAB);
+                } else {
+                    unregister_mods(mod_config(MOD_LALT));
+                    unregister_code(KC_TAB);
+                }
+            }
+            break;
+        case KC_NXSD:
+            // Next Window ALT+TAB (Windows) or CMD+TAB (macOS)
+            if (record->event.pressed) {
+                if (keymap_config.swap_lctl_lgui) {
+                    register_mods(mod_config(MOD_LGUI));
+                    register_code(KC_GRV);
+                } else {
+                    register_mods(mod_config(MOD_LALT));
+                    register_code(KC_GRV);
+                }
+            } else {
+                if (keymap_config.swap_lctl_lgui) {
+                    unregister_mods(mod_config(MOD_LGUI));
+                    unregister_code(KC_GRV);
+                } else {
+                    unregister_mods(mod_config(MOD_LALT));
+                    unregister_code(KC_GRV);
+                }
+            }
+            break;
+        case KC_NXTB:
+            // Next Tab CTRL+TAB
+            if (record->event.pressed) {
+                register_mods(mod_config(MOD_LCTL));
+                register_code(KC_TAB);
+            } else {
+                unregister_mods(mod_config(MOD_LCTL));
+                unregister_code(KC_TAB);
+            }
+            break;
+    }
+    return true;
+}
+// clang-format off
 
 #ifdef ENCODER_MAP_ENABLE
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
@@ -174,7 +235,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [EXT] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
     [NHRM] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
 };
-#endif
+#endif // ENCODER_MAP_ENABLE
 
 #ifdef CHORDAL_HOLD
 const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
@@ -193,7 +254,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
              'R'    , 'R'    , 'R'    , 'R'    , 'R'    , 'R'    , '*'    ,
              '*'    , '*'    , '*'    , '*'    , '*'
     );
-#endif
+#endif // CHORDAL_HOLD
 
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
@@ -248,4 +309,4 @@ bool oled_task_user(void) {
     return false;
 }
 
-#endif
+#endif // OLED_ENABLE
