@@ -1,6 +1,7 @@
 layout: { qmk_keyboard: sofle/rev1, layout_name: LAYOUT }
 combos:
     - { tk: [P, D], k: "\\", l: ["Base"] }
+    - { tk: [D, O], k: "Caps Word", l: ["Base"], a: bottom, o: 0.2 }
 layers:
     Base:
         - "`"
