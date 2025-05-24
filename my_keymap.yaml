@@ -9,13 +9,13 @@ layers:
         - Ctl+V
         - Ctl+A
         - Ctl+C
-        - MS BTN1
+        - $$mdi:mouse-left-click-outline$$
         - HOME
         - PGUP
         - PGDN
         - END
-        - MNXT
-        - MPLY
+        - $$mdi:skip-forward$$
+        - $$mdi:play-pause$$
         - TAB
         - V
         - W
@@ -56,11 +56,11 @@ layers:
         - ENT
         - LEFT
         - RGHT
-        - BSPC
+        - $$mdi:backspace-outline$$
         - R
         - ESC
         - REPEAT
-        - SPC
+        - $$mdi:keyboard-space$$
         - TAB
         - UP
         - DOWN
