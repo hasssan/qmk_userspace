@@ -231,6 +231,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
+// Combo definitions
+const uint16_t PROGMEM caps_combo[]      = {KC_D, KC_O, COMBO_END};
+const uint16_t PROGMEM backslash_combo[] = {KC_P, KC_D, COMBO_END};
+
+combo_t key_combos[] = {
+    COMBO(caps_combo, CW_TOGG),      // D and O toggle Caps Word
+    COMBO(backslash_combo, KC_BSLS), // P and D produce Backslash
+};
+
 void matrix_scan_user(void) {
     if (is_nxwd_active && timer_elapsed(nxwd_timer) > NX_TIMER) {
         if (keymap_config.swap_lctl_lgui) {
