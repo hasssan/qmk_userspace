@@ -1,4 +1,6 @@
 layout: { qmk_keyboard: sofle/rev1, layout_name: LAYOUT }
+combos:
+    - { tk: [P, D], k: "\\", l: ["Base"] }
 layers:
     Base:
         - "`"
