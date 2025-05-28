@@ -10,6 +10,8 @@
 #define PERMISSIVE_HOLD
 #define QUICK_TAP_TERM_PER_KEY
 
+#define FLOW_TAP_TERM 150
+
 // Caps word timeout after 3 seconds.
 #define CAPS_WORD_IDLE_TIMEOUT 3000
 // Holding Shift while Caps Word is active inverts the shift state.

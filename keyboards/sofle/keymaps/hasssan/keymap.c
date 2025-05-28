@@ -13,6 +13,7 @@ enum layers {
     FUN,  // 5
     EXT,  // 6
     NHRM, // 7
+    GAME, // 8
 };
 
 enum custom_keycodes {
@@ -88,8 +89,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* Left side */
     _______, _______, _______, _______, _______, _______,
     _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, KC_LALT, XXXXXXX, KC_LSFT, XXXXXXX, XXXXXXX,
-    _______, KC_LGUI, XXXXXXX, XXXXXXX, KC_LCTL, XXXXXXX, _______,
+    _______, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,
+    _______, KC_LGUI, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
                       _______, _______, _______, _______, _______,
 
              /* Right side */
@@ -138,19 +139,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       _______, _______, _______, _______, _______,
 
              /* Right side */
-                      _______, _______, _______, _______, _______, _______,
+                      _______, _______, _______, _______, _______, QK_BOOT,
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
                       XXXXXXX, XXXXXXX, KC_LSFT, XXXXXXX, KC_LALT, _______,
-             _______, XXXXXXX, KC_LCTL, XXXXXXX, XXXXXXX, KC_LGUI, _______,
+             _______, XXXXXXX, KC_LCTL, XXXXXXX, XXXXXXX, KC_LGUI, QK_RBT ,
              QK_LLCK, _______, _______, _______, _______
 ),
 [EXT] = LAYOUT_LR(
     /* Left side */
-    _______, _______ , _______, _______, _______, _______,
-    _______, TO(NHRM), XXXXXXX, XXXXXXX, CG_TOGG, XXXXXXX,
-    _______, KC_LALT , KC_LCTL, KC_LSFT, XXXXXXX, XXXXXXX,
-    _______, KC_LGUI , C(KC_V), C(KC_A), C(KC_C), XXXXXXX, _______,
-                       _______, _______, _______, _______, MS_BTN1,
+    _______, _______ , _______ , _______, _______, _______,
+    _______, DF(NHRM), DF(GAME), XXXXXXX, CG_TOGG, XXXXXXX,
+    _______, KC_LALT , KC_LCTL , KC_LSFT, XXXXXXX, XXXXXXX,
+    _______, KC_LGUI , C(KC_V) , C(KC_A), C(KC_C), XXXXXXX, _______,
+                       _______ , _______, _______, _______, MS_BTN1,
 
              /* Right side */
                       _______, _______, _______, _______, _______, _______,
@@ -166,6 +167,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_S    , KC_N   , KC_T   , KC_H   , KC_K   ,
     EXT_UND, KC_F    , KC_P   , KC_D   , KC_L   , KC_X   , KC_MUTE,
                        KC_LEFT, KC_RGHT, KC_BSPC, KC_R   , KC_ESC,
+
+             /* Right side */
+                      _______, _______, _______, _______, _______, _______,
+                      KC_SCLN, KC_DOT , KC_QUOT, KC_EQL, KC_SLSH, KC_Z   ,
+                      KC_COMM, KC_A   , KC_E   , KC_I  , KC_C   , KC_Q   ,
+             XXXXXXX, KC_MINS, KC_U   , KC_O   , KC_Y  , KC_B   , KC_ENT ,
+             QK_REP , KC_SPC , KC_TAB , KC_UP  , KC_DOWN
+),
+[GAME] = LAYOUT_LR( // Gaming Layout
+    /* Left side */
+    KC_GRV ,  KC_1   , KC_2   , KC_3   , KC_SPC, DF(BASE),
+    KC_TAB ,  KC_Q   , KC_W   , KC_E   , KC_R  , KC_T    ,
+    KC_ESC ,  KC_A   , KC_S   , KC_D   , KC_F  , KC_H    ,
+    KC_LSFT,  KC_Z   , KC_X   , KC_C   , KC_V  , KC_B    , KC_MUTE,
+                       KC_LCTL, KC_LALT, KC_DEL , KC_P   , KC_SPC ,
 
              /* Right side */
                       _______, _______, _______, _______, _______, _______,
@@ -273,6 +289,7 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
     [FUN] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
     [EXT] =  { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
     [NHRM] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
+    [GAME] = { ENCODER_CCW_CW(KC_VOLD, KC_VOLU), ENCODER_CCW_CW(MS_WHLU, MS_WHLD) },
 };
 #endif // ENCODER_MAP_ENABLE
 
@@ -342,6 +359,9 @@ void my_print_status_narrow(void) {
             break;
         case NHRM:
             oled_write_P(PSTR("NHRM\n"), false);
+            break;
+        case GAME:
+            oled_write_P(PSTR("GAME\n"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undef"), false);
