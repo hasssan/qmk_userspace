@@ -111,8 +111,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              /* Right side */
                       _______, _______, _______, _______, _______, _______,
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-                      XXXXXXX, XXXXXXX, HRM_E  , XXXXXXX, KC_LALT, _______,
-             _______, XXXXXXX, KC_LCTL, KC_COMM, KC_DOT , KC_LGUI, _______,
+                      XXXXXXX, XXXXXXX, HRM_E  , KC_LCTL, KC_LALT, _______,
+             _______, XXXXXXX, XXXXXXX, KC_COMM, KC_DOT , KC_LGUI, _______,
              QK_LLCK,   KC_0   , _______, _______, _______
 ),
 [WIN] = LAYOUT_LR(
@@ -141,8 +141,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
              /* Right side */
                       _______, _______, _______, _______, _______, QK_BOOT,
                       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______,
-                      XXXXXXX, XXXXXXX, KC_LSFT, XXXXXXX, KC_LALT, _______,
-             _______, XXXXXXX, KC_LCTL, XXXXXXX, XXXXXXX, KC_LGUI, QK_RBT ,
+                      XXXXXXX, XXXXXXX, KC_LSFT, KC_LCTL, KC_LALT, _______,
+             _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LGUI, QK_RBT ,
              QK_LLCK, _______, _______, _______, _______
 ),
 [EXT] = LAYOUT_LR(
@@ -157,12 +157,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                       _______, _______, _______, _______, _______, _______,
                       MS_WHLU, MS_BTN1, MS_UP  , MS_BTN2, XXXXXXX, _______,
                       MS_WHLD, MS_LEFT, MS_DOWN, MS_RGHT, XXXXXXX, _______,
-             _______, XXXXXXX, MS_WHLL, XXXXXXX, MS_WHLR, XXXXXXX, _______,
+             _______, XXXXXXX, MS_WHLL, MS_BTN3, MS_WHLR, XXXXXXX, _______,
              QK_LLCK, _______, _______, _______, _______
 ),
 [NHRM] = LAYOUT_LR( // Hands Down Promethium (Inverted)
     /* Left side */
-    _______, TO(BASE), _______, _______, _______, _______,
+    _______, DF(BASE), _______, _______, _______, _______,
     _______, KC_V    , KC_W   , KC_G   , KC_M   , KC_J   ,
     _______, KC_S    , KC_N   , KC_T   , KC_H   , KC_K   ,
     EXT_UND, KC_F    , KC_P   , KC_D   , KC_L   , KC_X   , KC_MUTE,
