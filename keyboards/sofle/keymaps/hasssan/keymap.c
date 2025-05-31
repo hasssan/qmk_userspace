@@ -170,9 +170,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
              /* Right side */
                       _______, _______, _______, _______, _______, _______,
-                      KC_SCLN, KC_DOT , KC_QUOT, KC_EQL, KC_SLSH, KC_Z   ,
-                      KC_COMM, KC_A   , KC_E   , KC_I  , KC_C   , KC_Q   ,
-             XXXXXXX, KC_MINS, KC_U   , KC_O   , KC_Y  , KC_B   , KC_ENT ,
+                      KC_SCLN, KC_DOT , KC_QUOT, KC_EQL , KC_SLSH, KC_Z   ,
+                      KC_COMM, KC_A   , KC_E   , KC_I   , KC_C   , KC_Q   ,
+             XXXXXXX, KC_MINS, KC_U   , KC_O   , KC_Y   , KC_B   , KC_ENT ,
              QK_REP , KC_SPC , KC_TAB , KC_UP  , KC_DOWN
 ),
 [GAME] = LAYOUT_LR( // Gaming Layout
@@ -185,10 +185,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
              /* Right side */
                       _______, _______, _______, _______, _______, _______,
-                      KC_SCLN, KC_DOT , KC_QUOT, KC_EQL, KC_SLSH, KC_Z   ,
-                      KC_COMM, KC_A   , KC_E   , KC_I  , KC_C   , KC_Q   ,
-             XXXXXXX, KC_MINS, KC_U   , KC_O   , KC_Y  , KC_B   , KC_ENT ,
-             QK_REP , KC_SPC , KC_TAB , KC_UP  , KC_DOWN
+                      MS_WHLU, MS_BTN1, MS_UP  , MS_BTN2, XXXXXXX, _______,
+                      MS_WHLD, MS_LEFT, MS_DOWN, MS_RGHT, XXXXXXX, _______,
+             _______, XXXXXXX, MS_WHLL, MS_BTN3, MS_WHLR, XXXXXXX, KC_ENT ,
+             QK_LLCK, _______, _______, _______, _______
 ),
 };
 
