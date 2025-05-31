@@ -1,0 +1,561 @@
+layout: {qmk_keyboard: sofle/rev1, layout_name: LAYOUT}
+layers:
+  BASE:
+  - {t: '`', s: '~'}
+  - DEL
+  - Ctl+V
+  - Ctl+A
+  - Ctl+C
+  - $$mdi:mouse-left-click-outline$$
+  - HOME
+  - PGUP
+  - PGDN
+  - END
+  - $$mdi:skip-next-outline$$
+  - $$mdi:play-pause$$
+  - TAB
+  - V
+  - W
+  - G
+  - M
+  - J
+  - {t: ;, s: ':'}
+  - {t: ., s: '>'}
+  - {t: '''', s: '"'}
+  - {t: '=', s: +}
+  - {t: /, s: '?'}
+  - Z
+  - ESC
+  - {t: S, h: LALT}
+  - {t: N, h: SYM}
+  - {t: T, h: LSFT}
+  - {t: H, h: NAV}
+  - K
+  - {t: ',', h: FUN, s: <}
+  - {t: A, h: NUM}
+  - {t: E, h: RSFT}
+  - {t: I, h: SYM}
+  - {t: C, h: LALT}
+  - Q
+  - {t: '-', h: EXT}
+  - {t: F, h: LGUI}
+  - P
+  - D
+  - {t: L, h: LCTL}
+  - X
+  - MUTE
+  - ''
+  - {t: '-', s: _}
+  - {t: U, h: LCTL}
+  - O
+  - {t: Y, h: WIN}
+  - {t: B, h: RGUI}
+  - $$mdi:keyboard-return$$
+  - LEFT
+  - RGHT
+  - $$mdi:backspace-outline$$
+  - R
+  - ESC
+  - REPEAT
+  - $$mdi:keyboard-space$$
+  - TAB
+  - UP
+  - DOWN
+  SYM:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '`'
+  - <
+  - '>'
+  - '-'
+  - '|'
+  - ^
+  - '{'
+  - '}'
+  - $
+  - '%'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '!'
+  - '*'
+  - /
+  - '='
+  - '&'
+  - '#'
+  - (
+  - )
+  - ;
+  - '"'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '~'
+  - +
+  - '['
+  - ']'
+  - '%'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '@'
+  - ':'
+  - ','
+  - .
+  - ''''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  NAV:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - PGUP
+  - HOME
+  - UP
+  - END
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - LALT
+  - LCTL
+  - LSFT
+  - ''
+  - ''
+  - PGDN
+  - LEFT
+  - DOWN
+  - RGHT
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - LGUI
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Layer Lock
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  NUM:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - /
+  - '9'
+  - '8'
+  - '7'
+  - '*'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - '-'
+  - '3'
+  - '2'
+  - '1'
+  - +
+  - ''
+  - ''
+  - {t: E, h: RSFT}
+  - LCTL
+  - LALT
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - X
+  - '6'
+  - '5'
+  - '4'
+  - '%'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ','
+  - .
+  - LGUI
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Layer Lock
+  - '0'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  WIN:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - LSFT
+  - Ctl+3
+  - Ctl+2
+  - Ctl+1
+  - ''
+  - ''
+  - ''
+  - Ctl+`
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - ''
+  - Ctl+6
+  - Ctl+5
+  - Ctl+4
+  - Ctl+W
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - ''
+  - Ctl+Tab
+  - Alt+Tab
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Gui+$$mdi:keyboard-space$$
+  - Layer Lock
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  FUN:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - BOOT
+  - {t: ▽, type: trans}
+  - F12
+  - F9
+  - F8
+  - F7
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - F10
+  - F3
+  - F2
+  - F1
+  - ''
+  - ''
+  - ''
+  - LSFT
+  - LCTL
+  - LALT
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - F11
+  - F6
+  - F5
+  - F4
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - ''
+  - ''
+  - ''
+  - ''
+  - LGUI
+  - RESET
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Layer Lock
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  EXT:
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - NHRM
+  - GAME
+  - ''
+  - CG TOGG
+  - ''
+  - MS WHLU
+  - $$mdi:mouse-left-click-outline$$
+  - MS UP
+  - $$mdi:mouse-right-click-outline$$
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - LALT
+  - LCTL
+  - LSFT
+  - ''
+  - ''
+  - MS WHLD
+  - MS LEFT
+  - MS DOWN
+  - MS RGHT
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - LGUI
+  - Ctl+V
+  - Ctl+A
+  - Ctl+C
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - ''
+  - MS WHLL
+  - MS BTN3
+  - MS WHLR
+  - ''
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - $$mdi:mouse-left-click-outline$$
+  - Layer Lock
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  NHRM:
+  - {t: ▽, type: trans}
+  - BASE
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - V
+  - W
+  - G
+  - M
+  - J
+  - ;
+  - .
+  - ''''
+  - '='
+  - /
+  - Z
+  - {t: ▽, type: trans}
+  - S
+  - N
+  - T
+  - H
+  - K
+  - ','
+  - A
+  - E
+  - I
+  - C
+  - Q
+  - {t: '-', h: EXT}
+  - F
+  - P
+  - D
+  - L
+  - X
+  - MUTE
+  - ''
+  - '-'
+  - U
+  - O
+  - Y
+  - B
+  - $$mdi:keyboard-return$$
+  - LEFT
+  - RGHT
+  - $$mdi:backspace-outline$$
+  - R
+  - ESC
+  - REPEAT
+  - $$mdi:keyboard-space$$
+  - TAB
+  - UP
+  - DOWN
+  GAME:
+  - '`'
+  - '1'
+  - '2'
+  - '3'
+  - $$mdi:keyboard-space$$
+  - BASE
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - TAB
+  - Q
+  - W
+  - E
+  - R
+  - T
+  - MS WHLU
+  - $$mdi:mouse-left-click-outline$$
+  - MS UP
+  - $$mdi:mouse-right-click-outline$$
+  - ''
+  - {t: ▽, type: trans}
+  - ESC
+  - A
+  - S
+  - D
+  - F
+  - H
+  - MS WHLD
+  - MS LEFT
+  - MS DOWN
+  - MS RGHT
+  - ''
+  - {t: ▽, type: trans}
+  - LSFT
+  - Z
+  - X
+  - C
+  - V
+  - B
+  - MUTE
+  - {t: ▽, type: trans}
+  - ''
+  - MS WHLL
+  - MS BTN3
+  - MS WHLR
+  - ''
+  - $$mdi:keyboard-return$$
+  - LCTL
+  - LALT
+  - DEL
+  - P
+  - $$mdi:keyboard-space$$
+  - Layer Lock
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+combos:
+- p: [38, 39]
+  k: \
+  l: [BASE, NHRM]
+- p: [39, 46]
+  k: CapsWord
+  l: [BASE, NHRM]
+  a: bottom
+  o: 0.2
+  w: 60.0
