@@ -335,7 +335,7 @@ void my_print_status_narrow(void) {
 
     oled_write_P(PSTR("\n\n"), false);
     oled_write_ln_P(PSTR("LAYER"), false);
-    switch (get_highest_layer(layer_state)) {
+    switch (get_highest_layer(layer_state|default_layer_state)) {
         case BASE:
             oled_write_P(PSTR("Base\n"), false);
             break;
