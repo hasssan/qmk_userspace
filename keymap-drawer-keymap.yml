@@ -559,3 +559,6 @@ combos:
   a: bottom
   o: 0.2
   w: 60.0
+- p: [45, 46]
+  k: $$mdi:keyboard-return$$
+  l: [BASE]

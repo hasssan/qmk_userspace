@@ -250,10 +250,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Combo definitions
 const uint16_t PROGMEM caps_combo[]      = {KC_D, KC_O, COMBO_END};
 const uint16_t PROGMEM backslash_combo[] = {KC_P, KC_D, COMBO_END};
+const uint16_t PROGMEM enter_combo[]     = {HRM_U, KC_O, COMBO_END};
 
 combo_t key_combos[] = {
     COMBO(caps_combo, CW_TOGG),      // D and O toggle Caps Word
     COMBO(backslash_combo, KC_BSLS), // P and D produce Backslash
+    COMBO(enter_combo, KC_ENT),      // U and O produce Enter
 };
 
 void matrix_scan_user(void) {
