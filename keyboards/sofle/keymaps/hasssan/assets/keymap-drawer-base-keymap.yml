@@ -56,7 +56,3 @@ layers:
     - ["ESC", "A", "S", "D", "F", "H", "MS WHLD", "MS LEFT", "MS DOWN", "MS RGHT", "", {t: ▽, type: trans}]
     - ["LSFT", "Z", "X", "C", "V", "B", "MUTE", {t: ▽, type: trans}, "", "MS WHLL", "MS BTN3", "MS WHLR", "", "$$mdi:keyboard-return$$"]
     - ["LCTL", "LALT", "DEL", "P", "$$mdi:keyboard-space$$", "Layer Lock", {t: ▽, type: trans}, {t: ▽, type: trans}, {t: ▽, type: trans}, {t: ▽, type: trans}]
-combos:
-- {p: [38, 39], k: "\\", l: ["BASE", "NHRM"]}
-- {p: [39, 46], k: "CapsWord", l: ["BASE", "NHRM"], a: "bottom", o: 0.2, w: 60.0}
-- {p: [45, 46], k: "$$mdi:keyboard-return$$", l: ["BASE"]}

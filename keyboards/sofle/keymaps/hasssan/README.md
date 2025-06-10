@@ -29,7 +29,8 @@ The base layer is [Hands Down Promethium (Inverted) Layout](https://www.reddit.c
             -c assets/keymap-drawer-config.yml parse \
             -b assets/keymap-drawer-base-keymap.yml \
             -q assets/sofle_rev1_hasssan.json \
-            --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME > assets/keymap-drawer-keymap.yml
+            --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME \
+            -o assets/keymap-drawer-keymap.yml
         ```
     - Create a new keymap drawer SVG:
         ```bash
@@ -38,24 +39,30 @@ The base layer is [Hands Down Promethium (Inverted) Layout](https://www.reddit.c
             -b assets/keymap-drawer-base-keymap.yml \
             -q assets/sofle_rev1_hasssan.json \
             --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME \
-            | keymap -c assets/keymap-drawer-config.yml draw - > assets/keymap-drawer.svg
+            | keymap \
+            -c assets/keymap-drawer-config.yml draw - assets/keymap-drawer-combos.yml \
+            -o assets/keymap-drawer.svg
         ```
     - Combine the above two commands:
         ```bash
         keymap \
             -c assets/keymap-drawer-config.yml parse \
             -b assets/keymap-drawer-base-keymap.yml \
-            -q assets/sofle_rev1_hasssan.json --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME > assets/keymap-drawer-keymap.yml \
+            -q assets/sofle_rev1_hasssan.json \
+            --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME \
+            -o assets/keymap-drawer-keymap.yml \
             && keymap \
             -c assets/keymap-drawer-config.yml parse \
             -b assets/keymap-drawer-base-keymap.yml \
             -q assets/sofle_rev1_hasssan.json \
             --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME \
-            | keymap -c assets/keymap-drawer-config.yml draw - > assets/keymap-drawer.svg
+            | keymap \
+            -c assets/keymap-drawer-config.yml draw - assets/keymap-drawer-combos.yml \
+            -o assets/keymap-drawer.svg
         ```
     - Watch for changes in the keymap file and run the combined command above, using [Nodemon](https://nodemon.io/):
         ```bash
-        nodemon -e yaml,yml --ignore keymap-drawer-keymap.yml --exec 'keymap -c assets/keymap-drawer-config.yml parse -b assets/keymap-drawer-base-keymap.yml -q assets/sofle_rev1_hasssan.json --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME > assets/keymap-drawer-keymap.yml && keymap -c assets/keymap-drawer-config.yml parse -b assets/keymap-drawer-base-keymap.yml -q assets/sofle_rev1_hasssan.json --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME | keymap -c assets/keymap-drawer-config.yml draw - > assets/keymap-drawer.svg'
+        nodemon -e yaml,yml --ignore keymap-drawer-keymap.yml --exec 'keymap -c assets/keymap-drawer-config.yml parse -b assets/keymap-drawer-base-keymap.yml -q assets/sofle_rev1_hasssan.json --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME -o assets/keymap-drawer-keymap.yml && keymap -c assets/keymap-drawer-config.yml parse -b assets/keymap-drawer-base-keymap.yml -q assets/sofle_rev1_hasssan.json --layer-names BASE SYM NAV NUM WIN FUN EXT NHRM GAME | keymap -c assets/keymap-drawer-config.yml draw - assets/keymap-drawer-combos.yml -o assets/keymap-drawer.svg'
         ```
 
 ## Credits
