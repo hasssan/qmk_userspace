@@ -45,17 +45,17 @@ parse_config:
         QK_LLCK: Layer Lock
         QK_BOOT: "BOOT"
         QK_RBT: "RESET"
-        LT(SYM, KC_N): { t: N, h: SYM }
-        LT(NAV, KC_H): { t: H, h: NAV }
-        LT(FUN, KC_COMM): { t: ",", h: FUN, s: "<" }
-        LT(NUM, KC_A): { t: A, h: NUM }
-        LT(SYM, KC_I): { t: I, h: SYM }
-        LT(EXT, KC_UNDS): { t: "-", h: EXT }
-        LT(WIN, KC_Y): { t: Y, h: WIN }
+        # LT(1, KC_N): { t: N, h: SYM }
+        # LT(2, KC_H): { t: H, h: NAV }
+        # LT(5, KC_COMM): { t: ",", h: FUN, s: "<" }
+        # LT(3, KC_A): { t: A, h: NUM }
+        # LT(2, KC_I): { t: I, h: SYM }
+        # LT(6, KC_UNDS): { t: "-", h: EXT }
+        # LT(4, KC_Y): { t: Y, h: WIN }
         QK_REP: "REPEAT"
-        DF(BASE): "BASE"
-        DF(GAME): "GAME"
-        DF(NHRM): "NHRM"
+        # DF(0): "BASE"
+        # DF(8): "GAME"
+        # DF(7): "NHRM"
     sticky_label: sticky
     toggle_label: toggle
     tap_toggle_label: tap-toggle
@@ -63,16 +63,15 @@ parse_config:
         t: ▽
         type: trans
     layer_legend_map:
-        {}
-        # L0: "BASE"
-        # L1: "SYM"
-        # L2: "NAV"
-        # L3: "NUM"
-        # L4: "WIN"
-        # L5: "FUN"
-        # L6: "EXT"
-        # L7: "NHRM"
-        # L8: "GAME"
+        L0: "BASE"
+        L1: "SYM"
+        L2: "NAV"
+        L3: "NUM"
+        L4: "WIN"
+        L5: "FUN"
+        L6: "EXT"
+        L7: "NHRM"
+        L8: "GAME"
     mark_alternate_layer_activators: false
     modifier_fn_map:
         left_ctrl: Ctl

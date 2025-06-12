@@ -1,7 +1,7 @@
 layout: {qmk_keyboard: sofle/rev1, layout_name: LAYOUT}
 layers:
-  BASE:
-  - {t: '`', s: '~'}
+  L0:
+  - '`'
   - DEL
   - Ctl+V
   - Ctl+A
@@ -19,11 +19,11 @@ layers:
   - G
   - M
   - J
-  - {t: ;, s: ':'}
-  - {t: ., s: '>'}
-  - {t: '''', s: '"'}
-  - {t: '=', s: +}
-  - {t: /, s: '?'}
+  - ;
+  - .
+  - ''''
+  - '='
+  - /
   - Z
   - ESC
   - {t: S, h: LALT}
@@ -31,13 +31,13 @@ layers:
   - {t: T, h: LSFT}
   - {t: H, h: NAV}
   - K
-  - {t: ',', h: FUN, s: <}
+  - {t: ',', h: FUN}
   - {t: A, h: NUM}
   - {t: E, h: RSFT}
   - {t: I, h: SYM}
   - {t: C, h: LALT}
   - Q
-  - {t: '-', h: EXT}
+  - {t: _, h: EXT}
   - {t: F, h: LGUI}
   - P
   - D
@@ -45,7 +45,7 @@ layers:
   - X
   - MUTE
   - ''
-  - {t: '-', s: _}
+  - '-'
   - {t: U, h: LCTL}
   - O
   - {t: Y, h: WIN}
@@ -61,7 +61,7 @@ layers:
   - TAB
   - UP
   - DOWN
-  SYM:
+  L1:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -88,7 +88,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - '!'
-  - '*'
+  - {t: '*', type: held}
   - /
   - '='
   - '&'
@@ -122,7 +122,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  NAV:
+  L2:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -151,7 +151,7 @@ layers:
   - LALT
   - LCTL
   - LSFT
-  - ''
+  - {type: held}
   - ''
   - PGDN
   - LEFT
@@ -183,7 +183,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  NUM:
+  L3:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -215,7 +215,7 @@ layers:
   - '1'
   - +
   - ''
-  - ''
+  - {type: held}
   - {t: E, h: RSFT}
   - LCTL
   - LALT
@@ -244,7 +244,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  WIN:
+  L4:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -292,7 +292,7 @@ layers:
   - ''
   - Ctl+Tab
   - Alt+Tab
-  - ''
+  - {type: held}
   - ''
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -305,7 +305,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  FUN:
+  L5:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -336,7 +336,7 @@ layers:
   - F2
   - F1
   - ''
-  - ''
+  - {type: held}
   - ''
   - LSFT
   - LCTL
@@ -366,7 +366,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  EXT:
+  L6:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -380,8 +380,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - NHRM
-  - GAME
+  - {t: NHRM, h: toggle}
+  - {t: GAME, h: toggle}
   - ''
   - CG TOGG
   - ''
@@ -403,7 +403,7 @@ layers:
   - MS RGHT
   - ''
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - LGUI
   - Ctl+V
   - Ctl+A
@@ -427,9 +427,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  NHRM:
+  L7:
   - {t: ▽, type: trans}
-  - BASE
+  - {t: BASE, h: toggle}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -464,7 +464,7 @@ layers:
   - I
   - C
   - Q
-  - {t: '-', h: EXT}
+  - {t: _, h: EXT}
   - F
   - P
   - D
@@ -488,13 +488,13 @@ layers:
   - TAB
   - UP
   - DOWN
-  GAME:
+  L8:
   - '`'
   - '1'
   - '2'
   - '3'
   - $$mdi:keyboard-space$$
-  - BASE
+  - {t: BASE, h: toggle}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
