@@ -165,6 +165,7 @@ parse_config:
         NXWD: "Alt+Tab"
         NXSW: "Ctl+`"
         NXTB: "Ctl+Tab"
+        CSPC: "Ctl+Space"
     zmk_remove_keycode_prefix: []
     zmk_keycode_map:
         EXCLAMATION: "!"

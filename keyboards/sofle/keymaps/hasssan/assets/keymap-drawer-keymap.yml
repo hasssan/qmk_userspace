@@ -259,9 +259,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - ''
-  - ''
-  - ''
-  - ''
+  - Ctl+9
+  - Ctl+8
+  - Ctl+7
   - ''
   - ''
   - ''
@@ -299,7 +299,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - Gui+$$mdi:keyboard-space$$
+  - Ctl+Space
   - Layer Lock
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
