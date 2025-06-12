@@ -20,6 +20,7 @@ enum custom_keycodes {
     KC_NXWD = SAFE_RANGE, // Next Window ALT+TAB (Windows) or CMD+TAB (macOS)
     KC_NXSW,              // Next Window same app for macOS CMD+`
     KC_NXTB,              // Next Tab CTRL+TAB, Windows and macOS behave the same
+    KC_CSPC,              // Command Pallete: ALT+Space for Windows Powertoys or CMD+Space for macOS
 };
 
 #define NX_TIMER 700 // Timer for NX keycodes
@@ -118,10 +119,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [WIN] = LAYOUT_LR(
     /* Left side */
     _______, _______, _______, _______, _______, _______,
-    _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    _______, KC_LSFT, LCTL(3), LCTL(2), LCTL(1), XXXXXXX,
-    _______, XXXXXXX, LCTL(6), LCTL(5), LCTL(4), C(KC_W), _______  ,
-                      _______, _______, _______, _______, G(KC_SPC),
+    _______, XXXXXXX, C(KC_9), C(KC_8), C(KC_7), XXXXXXX,
+    _______, KC_LSFT, C(KC_3), C(KC_2), C(KC_1), XXXXXXX,
+    _______, XXXXXXX, C(KC_6), C(KC_5), C(KC_4), C(KC_W), _______,
+                      _______, _______, _______, _______, KC_CSPC,
 
              /* Right side */
                       _______, _______, _______, _______, _______, _______,
@@ -201,7 +202,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (!is_nxwd_active) {
                     is_nxwd_active = true;
                     if (keymap_config.swap_lctl_lgui) {
-                        register_mods(mod_config(MOD_LGUI));
+                        register_mods(mod_config(MOD_LCTL));
                     } else {
                         register_mods(mod_config(MOD_LALT));
                     }
@@ -219,7 +220,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (!is_nxsw_active) {
                     is_nxsw_active = true;
                     if (keymap_config.swap_lctl_lgui) {
-                        register_mods(mod_config(MOD_LGUI));
+                        register_mods(mod_config(MOD_LCTL));
                     } else {
                         register_mods(mod_config(MOD_LALT));
                     }
@@ -235,12 +236,34 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 if (!is_nxtb_active) {
                     is_nxtb_active = true;
-                    register_mods(mod_config(MOD_LCTL));
+                    if (keymap_config.swap_lctl_lgui) {
+                        register_mods(mod_config(MOD_LGUI));
+                    } else {
+                        register_mods(mod_config(MOD_LCTL));
+                    }
                 }
                 nxtb_timer = timer_read();
                 register_code(KC_TAB);
             } else {
                 unregister_code(KC_TAB);
+            }
+            break;
+        case KC_CSPC:
+            // Command Pallete: ALT+Space for Windows Powertoys or CMD+Space for macOS
+            if (record->event.pressed) {
+                if (keymap_config.swap_lctl_lgui) {
+                    register_mods(mod_config(MOD_LCTL));
+                } else {
+                    register_mods(mod_config(MOD_LALT));
+                }
+                register_code(KC_SPC);
+            } else {
+                unregister_code(KC_SPC);
+                if (keymap_config.swap_lctl_lgui) {
+                    unregister_mods(mod_config(MOD_LCTL));
+                } else {
+                    unregister_mods(mod_config(MOD_LALT));
+                }
             }
             break;
     }
@@ -261,7 +284,7 @@ combo_t key_combos[] = {
 void matrix_scan_user(void) {
     if (is_nxwd_active && timer_elapsed(nxwd_timer) > NX_TIMER) {
         if (keymap_config.swap_lctl_lgui) {
-            unregister_mods(mod_config(MOD_LGUI));
+            unregister_mods(mod_config(MOD_LCTL));
         } else {
             unregister_mods(mod_config(MOD_LALT));
         }
@@ -269,14 +292,18 @@ void matrix_scan_user(void) {
     }
     if (is_nxsw_active && timer_elapsed(nxsw_timer) > NX_TIMER) {
         if (keymap_config.swap_lctl_lgui) {
-            unregister_mods(mod_config(MOD_LGUI));
+            unregister_mods(mod_config(MOD_LCTL));
         } else {
             unregister_mods(mod_config(MOD_LALT));
         }
         is_nxsw_active = false;
     }
     if (is_nxtb_active && timer_elapsed(nxtb_timer) > NX_TIMER) {
-        unregister_mods(mod_config(MOD_LCTL));
+        if (keymap_config.swap_lctl_lgui) {
+            unregister_mods(mod_config(MOD_LGUI));
+        } else {
+            unregister_mods(mod_config(MOD_LCTL));
+        }
         is_nxtb_active = false;
     }
 }
