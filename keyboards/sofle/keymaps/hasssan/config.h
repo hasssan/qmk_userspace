@@ -21,4 +21,4 @@
 #define LAYER_LOCK_IDLE_TIMEOUT 60000
 
 // Without this, the right hand side will mirror the left hand side.
-#define EE_HANDS
+// #define EE_HANDS
