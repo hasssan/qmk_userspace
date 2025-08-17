@@ -62,14 +62,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB , KC_V   , KC_W   , KC_G   , KC_M   , KC_J   ,
     KC_ESC , HRM_S  , HRM_N  , HRM_T  , HRM_H  , KC_K   ,
     EXT_UND, HRM_F  , KC_P   , KC_D   , HRM_L  , KC_X   , KC_MUTE,
-                      KC_LEFT, KC_RGHT, KC_BSPC, KC_R   , KC_ESC,
+                      KC_UP  , KC_DOWN, KC_BSPC, KC_R   , KC_ESC ,
 
              /* Right side */
-                      KC_HOME, KC_PGUP, KC_PGDN, KC_END, KC_MNXT, KC_MPLY,
-                      KC_SCLN, KC_DOT , KC_QUOT, KC_EQL, KC_SLSH, KC_Z   ,
-                      HRM_COM, HRM_A  , HRM_E  , HRM_I , HRM_C  , KC_Q   ,
-             XXXXXXX, KC_MINS, HRM_U  , KC_O   , HRM_Y , HRM_B  , KC_ENT ,
-             QK_REP , KC_SPC , KC_TAB , KC_UP  , KC_DOWN
+                      KC_HOME, KC_PGUP, KC_PGDN, KC_END , KC_MNXT, KC_MPLY,
+                      KC_SCLN, KC_DOT , KC_QUOT, KC_EQL , KC_SLSH, KC_Z   ,
+                      HRM_COM, HRM_A  , HRM_E  , HRM_I  , HRM_C  , KC_Q   ,
+             XXXXXXX, KC_MINS, HRM_U  , KC_O   , HRM_Y  , HRM_B  , KC_ENT ,
+             QK_REP , KC_SPC , KC_TAB , KC_LEFT, KC_RGHT
 ),
 [SYM] = LAYOUT_LR(
     /* Left side */
@@ -167,29 +167,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_V    , KC_W   , KC_G   , KC_M   , KC_J   ,
     _______, KC_S    , KC_N   , KC_T   , KC_H   , KC_K   ,
     EXT_UND, KC_F    , KC_P   , KC_D   , KC_L   , KC_X   , KC_MUTE,
-                       KC_LEFT, KC_RGHT, KC_BSPC, KC_R   , KC_ESC,
+                       KC_UP  , KC_DOWN, KC_BSPC, KC_R   , KC_ESC ,
 
              /* Right side */
                       _______, _______, _______, _______, _______, _______,
                       KC_SCLN, KC_DOT , KC_QUOT, KC_EQL , KC_SLSH, KC_Z   ,
                       KC_COMM, KC_A   , KC_E   , KC_I   , KC_C   , KC_Q   ,
              XXXXXXX, KC_MINS, KC_U   , KC_O   , KC_Y   , KC_B   , KC_ENT ,
-             QK_REP , KC_SPC , KC_TAB , KC_UP  , KC_DOWN
+             QK_REP , KC_SPC , KC_TAB , KC_LEFT, KC_RGHT
 ),
 [GAME] = LAYOUT_LR( // Gaming Layout
     /* Left side */
-    KC_GRV ,  KC_1   , KC_2   , KC_3   , KC_SPC, DF(BASE),
-    KC_TAB ,  KC_Q   , KC_W   , KC_E   , KC_R  , KC_T    ,
-    KC_ESC ,  KC_A   , KC_S   , KC_D   , KC_F  , KC_H    ,
-    KC_LSFT,  KC_Z   , KC_X   , KC_C   , KC_V  , KC_B    , KC_MUTE,
-                       KC_LCTL, KC_LALT, KC_DEL , KC_P   , KC_SPC ,
+    KC_GRV ,  KC_1   , KC_2   , KC_3   , KC_4  , KC_5   ,
+    KC_TAB ,  KC_Q   , KC_W   , KC_E   , KC_R  , KC_T   ,
+    KC_ESC ,  KC_A   , KC_S   , KC_D   , KC_F  , KC_H   ,
+    KC_LSFT,  KC_Z   , KC_X   , KC_C   , KC_V  , KC_B   , KC_MUTE,
+                       KC_TAB , KC_LCTL, KC_LALT, KC_SPC, KC_ENT ,
 
              /* Right side */
-                      _______, _______, _______, _______, _______, _______,
-                      MS_WHLU, MS_BTN1, MS_UP  , MS_BTN2, XXXXXXX, _______,
-                      MS_WHLD, MS_LEFT, MS_DOWN, MS_RGHT, XXXXXXX, _______,
-             _______, XXXXXXX, MS_WHLL, MS_BTN3, MS_WHLR, XXXXXXX, KC_ENT ,
-             QK_LLCK, _______, _______, _______, _______
+                      KC_6   , KC_7   , KC_8   , KC_9   , KC_0   , DF(BASE),
+                      KC_Y   , KC_U   , KC_I   , KC_O   , KC_P   , XXXXXXX,
+                      KC_G   , KC_J   , KC_K   , KC_L   , XXXXXXX, XXXXXXX,
+             _______, KC_N   , KC_M   , XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT ,
+             KC_ESC , KC_LEFT, KC_RGHT, KC_UP  , KC_DOWN
 ),
 };
 

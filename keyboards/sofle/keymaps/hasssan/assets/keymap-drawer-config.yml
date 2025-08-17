@@ -166,6 +166,11 @@ parse_config:
         NXSW: "Ctl+`"
         NXTB: "Ctl+Tab"
         CSPC: "Ctl+Space"
+        RGHT: "$$mdi:arrow-right$$"
+        LEFT: "$$mdi:arrow-left$$"
+        UP: "$$mdi:arrow-up$$"
+        DOWN: "$$mdi:arrow-down$$"
+        TAB: "$$mdi:keyboard-tab$$"
     zmk_remove_keycode_prefix: []
     zmk_keycode_map:
         EXCLAMATION: "!"

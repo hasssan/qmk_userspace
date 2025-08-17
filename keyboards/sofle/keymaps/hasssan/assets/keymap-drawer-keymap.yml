@@ -13,7 +13,7 @@ layers:
   - END
   - $$mdi:skip-next-outline$$
   - $$mdi:play-pause$$
-  - TAB
+  - $$mdi:keyboard-tab$$
   - V
   - W
   - G
@@ -51,16 +51,16 @@ layers:
   - {t: Y, h: WIN}
   - {t: B, h: RGUI}
   - $$mdi:keyboard-return$$
-  - LEFT
-  - RGHT
+  - $$mdi:arrow-up$$
+  - $$mdi:arrow-down$$
   - $$mdi:backspace-outline$$
   - R
   - ESC
   - REPEAT
   - $$mdi:keyboard-space$$
-  - TAB
-  - UP
-  - DOWN
+  - $$mdi:keyboard-tab$$
+  - $$mdi:arrow-left$$
+  - $$mdi:arrow-right$$
   SYM:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -143,7 +143,7 @@ layers:
   - ''
   - PGUP
   - HOME
-  - UP
+  - $$mdi:arrow-up$$
   - END
   - ''
   - {t: ▽, type: trans}
@@ -154,9 +154,9 @@ layers:
   - ''
   - ''
   - PGDN
-  - LEFT
-  - DOWN
-  - RGHT
+  - $$mdi:arrow-left$$
+  - $$mdi:arrow-down$$
+  - $$mdi:arrow-right$$
   - ''
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -478,53 +478,53 @@ layers:
   - Y
   - B
   - $$mdi:keyboard-return$$
-  - LEFT
-  - RGHT
+  - $$mdi:arrow-up$$
+  - $$mdi:arrow-down$$
   - $$mdi:backspace-outline$$
   - R
   - ESC
   - REPEAT
   - $$mdi:keyboard-space$$
-  - TAB
-  - UP
-  - DOWN
+  - $$mdi:keyboard-tab$$
+  - $$mdi:arrow-left$$
+  - $$mdi:arrow-right$$
   GAME:
-  - '`'
+  - {t: '`', s: '~'}
   - '1'
   - '2'
   - '3'
-  - $$mdi:keyboard-space$$
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '0'
   - BASE
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - TAB
+  - $$mdi:keyboard-tab$$
   - Q
   - W
   - E
   - R
   - T
-  - MS WHLU
-  - $$mdi:mouse-left-click-outline$$
-  - MS UP
-  - $$mdi:mouse-right-click-outline$$
+  - Y
+  - U
+  - I
+  - O
+  - P
   - ''
-  - {t: ▽, type: trans}
   - ESC
   - A
   - S
   - D
   - F
   - H
-  - MS WHLD
-  - MS LEFT
-  - MS DOWN
-  - MS RGHT
+  - G
+  - J
+  - K
+  - L
   - ''
-  - {t: ▽, type: trans}
+  - ''
   - LSFT
   - Z
   - X
@@ -533,19 +533,19 @@ layers:
   - B
   - MUTE
   - {t: ▽, type: trans}
+  - N
+  - M
   - ''
-  - MS WHLL
-  - MS BTN3
-  - MS WHLR
+  - ''
   - ''
   - $$mdi:keyboard-return$$
+  - $$mdi:keyboard-tab$$
   - LCTL
   - LALT
-  - DEL
-  - P
   - $$mdi:keyboard-space$$
-  - Layer Lock
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - $$mdi:keyboard-return$$
+  - ESC
+  - $$mdi:arrow-left$$
+  - $$mdi:arrow-right$$
+  - $$mdi:arrow-up$$
+  - $$mdi:arrow-down$$
